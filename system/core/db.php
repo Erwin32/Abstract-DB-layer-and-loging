@@ -1,8 +1,7 @@
 <?php
 
 /**
- * Description of db
- * odbc DB handling
+ * DB class for some basic simpilification in future odbc functions will be here however for ORM class nothing will change
  * @author Ervin
  */
 class db{

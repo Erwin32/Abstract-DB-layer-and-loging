@@ -8,22 +8,46 @@
 class orm {
     
     /**
-     * Vars
+     * Variables
+     */
+    
+    /**
      * fields array holds row data
-     * keyField holds name of field wich is primary key (defined in extended ORM class)
-     * key holds primary key for target table
-     * loaded holds ORM status 1 if data is loaded form DB, 0 if its empty, 2 if data is desynchronized(before saving)
-     * table holds name of the table in question (defined in extended ORM class)
-     * schema holds data used for table creation (defined in extended ORM class)
+     * @var type 
      */
     protected $fields=array();
+    /**
+     * keyField holds name of field wich is primary key (defined in extended ORM class)
+     * @var type 
+     */
     protected $keyField;
+    /**
+     * key holds primary key for target table
+     * @var type 
+     */
     protected $key;
+    /**
+     * loaded holds ORM status 1 if data is loaded form DB, 0 if its empty, 2 if data is desynchronized(before saving)
+     * @var type 
+     */
     protected $loaded=0;
+    /**
+     * table holds name of the table in question (defined in extended ORM class)
+     * @var type 
+     */
     protected $table;
+    /**
+     * schema holds data used for table creation (defined in extended ORM class)
+     * @var type 
+     */
     protected $schema=array();
-
-
+    
+    
+    
+    /**
+     * Construct
+     * @param type $key
+     */
     public function __construct($key=NULL) {
         $this->key=$key;
         if($key!=NULL){
@@ -138,6 +162,12 @@ class orm {
         return $this;
     }
     
+    /**
+     * Deletes Row to wich it tied to from table first param states if deleteExtraWork method shuld be caled for user specified clean up, second param if true will unload data from ORM otherwise you still have soft backup loaded in orm class
+     * @param type $hasChildsOrParrents
+     * @param type $andUnload
+     * @return \orm
+     */
     public function delete($hasChildsOrParrents=FALSE,$andUnload=FALSE) {
         $sql="DELETE FROM $this->table WHERE $this->keyField=$this->key LIMIT 1;";
         db::query($sql);

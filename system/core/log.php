@@ -15,10 +15,17 @@ class log {
      * Methods
      */
     
+    /**
+     * Inicializes ORM in "handle mode" for logs
+     */
     public static function init() {
         self::$orm=new orm_log();
     }
     
+    /**
+     * Determins human readable timestamp for log entry and creates log entry in DB accepting any string to log
+     * @param type $msg
+     */
     public static function writeLogEntry($msg) {
         echo self::$orm->state(TRUE);
         $time=time();
