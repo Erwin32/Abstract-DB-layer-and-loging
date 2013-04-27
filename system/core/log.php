@@ -18,8 +18,8 @@ class log {
     /**
      * Inicializes ORM in "handle mode" for logs
      */
-    public static function init() {
-        self::$orm=new orm_log();
+    public static function init($db) {
+        self::$orm=new orm_log($db);
     }
     
     /**
@@ -27,12 +27,10 @@ class log {
      * @param type $msg
      */
     public static function writeLogEntry($msg) {
-        echo self::$orm->state(TRUE);
+        self::$orm->checkForTable(TRUE);   
         $time=time();
         $timeStamp=date("[H:i:s]", $time);
         self::$orm->set('msg', $timeStamp.$msg, TRUE);
-        echo $msg;
-        echo self::$orm->state(TRUE);
     }
     
     

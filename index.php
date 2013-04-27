@@ -17,9 +17,9 @@ autoload_classes();
 require_once(_REALPATH.'app/conf/general-config.php');
 
 //init DB
-db::init();
-db::conect();
-log::init();
+$db1=new db;
+$db1->conect();
+log::init($db1);
 
 //connect your defined ORMs
 autoload_orms();

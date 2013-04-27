@@ -41,14 +41,23 @@ class orm {
      * @var type 
      */
     protected $schema=array();
-    
-    
-    
+    /**
+     * db_class contains database connection handling class
+     * @var type 
+     */
+    protected $db_class;
+
+
+
+
+
+
     /**
      * Construct
      * @param type $key
      */
-    public function __construct($key=NULL) {
+    public function __construct($db,$key=NULL) {
+        if(is_object($db)){$this->db_class=$db;}
         $this->key=$key;
         if($key!=NULL){
             $this->load();
@@ -74,8 +83,8 @@ class orm {
             return $this;
         }
         $sql="SELECT * FROM $this->table";
-        $result=db::query($sql);
-        $this->fields=db::fetch_array($result);
+        $result=$this->db_class->query($sql);
+        $this->fields=$this->db_class->fetch_array($result);
         if($this->fields==FALSE){
             $logStatement='ORM Load failed in '.get_class($this).' SELECT failed!';
             log::writeLogEntry($logStatement);
@@ -104,7 +113,7 @@ class orm {
      * @return \orm
      */
     public function set($what, $val, $update=FALSE){
-        $val=db::makeSafe($val);
+        $val=$this->db_class->makeSafe($val);
         $this->fields[$what]=$val;
         
         if(1==$this->loaded or 2==$this->loaded){
@@ -170,7 +179,7 @@ class orm {
      */
     public function delete($hasChildsOrParrents=FALSE,$andUnload=FALSE) {
         $sql="DELETE FROM $this->table WHERE $this->keyField=$this->key LIMIT 1;";
-        db::query($sql);
+        $this->db_class->query($sql);
         $this->loaded=3;
         if($hasChildsOrParrents){
             $this->deleteExtraWork();
@@ -216,7 +225,7 @@ class orm {
         
         echo '<br>'.$sql.'<br>';
         
-        db::query($sql);
+        $this->db_class->query($sql);
         $this->loaded=1;
     }
     
@@ -226,9 +235,9 @@ class orm {
      * @return boolean
      */
     public function checkForTable($ifNotCreateIt=FALSE) {
-        $result=db::query("SHOW TABLES LIKE '$this->table'");
+        $result=$this->db_class->query("SHOW TABLES LIKE '$this->table'");
         
-           $prep=db::fetch_array($result);
+           $prep=$this->db_class->fetch_array($result);
            if($prep==FALSE){
                if($ifNotCreateIt){
                    $this->create();
@@ -275,7 +284,7 @@ class orm {
         $sql.='PRIMARY KEY (`'.$primary.'`)';
         $sql.=') ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1 ;';
         
-        db::query($sql);
+        $this->db_class->query($sql);
     }
 
     /**

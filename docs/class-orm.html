@@ -103,7 +103,7 @@
 
 				<b>Author:</b>
 				Ervin<br />
-		<b>Located at</b> <a href="source-class-orm.html#3-301" title="Go to source code">system/orm/orm.php</a><br />
+		<b>Located at</b> <a href="source-class-orm.html#3-310" title="Go to source code">system/orm/orm.php</a><br />
 	</div>
 
 
@@ -121,7 +121,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-orm.html#47-56" title="Go to source code">__construct</a>( <span>type <var>$key</var> = <span class="php-keyword1">NULL</span></span> )</code>
+		<code><a href="source-class-orm.html#55-65" title="Go to source code">__construct</a>( <span>type <var>$db</var></span>, <span>mixed <var>$key</var> = <span class="php-keyword1">NULL</span></span> )</code>
 
 		<div class="description short">
 			
@@ -137,8 +137,10 @@
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$key</var></dt>
+					<dt><var>$db</var></dt>
 					<dd><code>type</code><br>$key</dd>
+					<dt><var>$key</var></dt>
+					<dd></dd>
 				</dl></div>
 
 
@@ -159,7 +161,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_load">#</a>
-		<code><a href="source-class-orm.html#62-89" title="Go to source code">load</a>( <span>type <var>$key</var> = <span class="php-quote">'none'</span></span> )</code>
+		<code><a href="source-class-orm.html#71-98" title="Go to source code">load</a>( <span>type <var>$key</var> = <span class="php-quote">'none'</span></span> )</code>
 
 		<div class="description short">
 			
@@ -201,7 +203,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_get">#</a>
-		<code><a href="source-class-orm.html#91-98" title="Go to source code">get</a>( <span>type <var>$what</var></span> )</code>
+		<code><a href="source-class-orm.html#100-107" title="Go to source code">get</a>( <span>type <var>$what</var></span> )</code>
 
 		<div class="description short">
 			
@@ -243,7 +245,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_set">#</a>
-		<code><a href="source-class-orm.html#100-123" title="Go to source code">set</a>( <span>type <var>$what</var></span>, <span>type <var>$val</var></span>, <span>mixed <var>$update</var> = <span class="php-keyword1">FALSE</span></span> )</code>
+		<code><a href="source-class-orm.html#109-132" title="Go to source code">set</a>( <span>type <var>$what</var></span>, <span>type <var>$val</var></span>, <span>mixed <var>$update</var> = <span class="php-keyword1">FALSE</span></span> )</code>
 
 		<div class="description short">
 			
@@ -291,7 +293,7 @@ trigering actual save to FB by default</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_state">#</a>
-		<code><a href="source-class-orm.html#125-150" title="Go to source code">state</a>( <span>type <var>$verbal</var> = <span class="php-keyword1">FALSE</span></span> )</code>
+		<code><a href="source-class-orm.html#134-159" title="Go to source code">state</a>( <span>type <var>$verbal</var> = <span class="php-keyword1">FALSE</span></span> )</code>
 
 		<div class="description short">
 			
@@ -333,7 +335,7 @@ trigering actual save to FB by default</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_unload">#</a>
-		<code><a href="source-class-orm.html#152-163" title="Go to source code">unload</a>( )</code>
+		<code><a href="source-class-orm.html#161-172" title="Go to source code">unload</a>( )</code>
 
 		<div class="description short">
 			
@@ -370,7 +372,7 @@ trigering actual save to FB by default</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_delete">#</a>
-		<code><a href="source-class-orm.html#165-184" title="Go to source code">delete</a>( <span>type <var>$hasChildsOrParrents</var> = <span class="php-keyword1">FALSE</span></span>, <span>type <var>$andUnload</var> = <span class="php-keyword1">FALSE</span></span> )</code>
+		<code><a href="source-class-orm.html#174-193" title="Go to source code">delete</a>( <span>type <var>$hasChildsOrParrents</var> = <span class="php-keyword1">FALSE</span></span>, <span>type <var>$andUnload</var> = <span class="php-keyword1">FALSE</span></span> )</code>
 
 		<div class="description short">
 			
@@ -420,7 +422,7 @@ orm class</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_save">#</a>
-		<code><a href="source-class-orm.html#186-221" title="Go to source code">save</a>( )</code>
+		<code><a href="source-class-orm.html#195-230" title="Go to source code">save</a>( )</code>
 
 		<div class="description short">
 			
@@ -453,7 +455,7 @@ orm class</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_checkForTable">#</a>
-		<code><a href="source-class-orm.html#223-243" title="Go to source code">checkForTable</a>( <span>type <var>$ifNotCreateIt</var> = <span class="php-keyword1">FALSE</span></span> )</code>
+		<code><a href="source-class-orm.html#232-252" title="Go to source code">checkForTable</a>( <span>type <var>$ifNotCreateIt</var> = <span class="php-keyword1">FALSE</span></span> )</code>
 
 		<div class="description short">
 			
@@ -497,7 +499,7 @@ true it will create specified table if table dont exist</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_create">#</a>
-		<code><a href="source-class-orm.html#245-279" title="Go to source code">create</a>( <span>type <var>$force</var> = <span class="php-keyword1">FALSE</span></span> )</code>
+		<code><a href="source-class-orm.html#254-288" title="Go to source code">create</a>( <span>type <var>$force</var> = <span class="php-keyword1">FALSE</span></span> )</code>
 
 		<div class="description short">
 			
@@ -537,7 +539,7 @@ param is true</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_loadExtraWork">#</a>
-		<code><a href="source-class-orm.html#281-286" title="Go to source code">loadExtraWork</a>( )</code>
+		<code><a href="source-class-orm.html#290-295" title="Go to source code">loadExtraWork</a>( )</code>
 
 		<div class="description short">
 			
@@ -570,7 +572,7 @@ param is true</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_saveExtraWork">#</a>
-		<code><a href="source-class-orm.html#288-293" title="Go to source code">saveExtraWork</a>( )</code>
+		<code><a href="source-class-orm.html#297-302" title="Go to source code">saveExtraWork</a>( )</code>
 
 		<div class="description short">
 			
@@ -603,7 +605,7 @@ param is true</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_deleteExtraWork">#</a>
-		<code><a href="source-class-orm.html#295-300" title="Go to source code">deleteExtraWork</a>( )</code>
+		<code><a href="source-class-orm.html#304-309" title="Go to source code">deleteExtraWork</a>( )</code>
 
 		<div class="description short">
 			
@@ -803,6 +805,33 @@ data is desynchronized(before saving)</p>
 			<div class="description detailed hidden">
 				
 <p>schema holds data used for table creation (defined in extended ORM class)</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="db_class" id="$db_class">
+		<td class="attributes"><code>
+			protected  
+			type
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-orm.html#44-48" title="Go to source code"><var>$db_class</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$db_class" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>db_class contains database connection handling class</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>db_class contains database connection handling class</p>
 
 
 			</div>
