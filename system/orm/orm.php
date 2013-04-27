@@ -57,7 +57,7 @@ class orm {
      * @param type $key
      */
     public function __construct($db,$key=NULL) {
-        if(is_object($db)){$this->db_class=$db;}
+        if(is_object($db)){$this->db_class=$db;}else{log::writeLogEntry('ORM Inicialization failed '.get_class($this).' No DB class!');}
         $this->key=$key;
         if($key!=NULL){
             $this->load();
@@ -107,8 +107,9 @@ class orm {
     }
     
     /**
-     * Sets Data to variable representing that DB colum for row loaded in ORM not trigering actual save to FB by default
+     * Sets Data to variable representing that DB colum for row loaded in ORM not trigering actual save to DB by default
      * @param type $what
+     * @param type $val
      * @param type $update
      * @return \orm
      */
@@ -196,8 +197,6 @@ class orm {
      * saves current data from array to DB
      */
     public function save(){
-        echo '<br>SAVING<br>';
-        echo $this->fields['msg'];
         if($this->loaded==1 OR $this->loaded==2){
             if($this->loaded==1){
                 //zapis do logu
@@ -222,8 +221,6 @@ class orm {
             $vals=substr_replace($vals ,"",-1);
             $sql="INSERT INTO $this->table ($keys) VALUES($vals)";
         }
-        
-        echo '<br>'.$sql.'<br>';
         
         $this->db_class->query($sql);
         $this->loaded=1;
