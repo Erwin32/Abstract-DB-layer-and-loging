@@ -17,7 +17,7 @@ autoload_classes();
 require_once(_REALPATH.'app/conf/general-config.php');
 
 //init DB
-$db1=new db;
+$db1=new db_pdo;
 $db1->conect();
 log::init($db1);
 

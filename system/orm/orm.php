@@ -83,7 +83,7 @@ class orm {
             return $this;
         }
         $sql="SELECT * FROM $this->table";
-        $result=$this->db_class->query($sql);
+        $result=$this->db_class->query($sql,'select');
         $this->fields=$this->db_class->fetch_array($result);
         if($this->fields==FALSE){
             $logStatement='ORM Load failed in '.get_class($this).' SELECT failed!';
@@ -233,7 +233,8 @@ class orm {
      */
     public function checkForTable($ifNotCreateIt=FALSE) {
         $result=$this->db_class->query("SHOW TABLES LIKE '$this->table'");
-        
+            echo $result;
+            var_dump($result);
            $prep=$this->db_class->fetch_array($result);
            if($prep==FALSE){
                if($ifNotCreateIt){

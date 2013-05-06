@@ -11,6 +11,8 @@ class orm_log extends orm{
         $this->table='log__'.date("d_m_Y");
         parent::__construct($db,$key);
         
+        
+        
         $this->schema[0]['name']='id';
         $this->schema[0]['type']='int';
         $this->schema[0]['limit']=11;
@@ -21,6 +23,8 @@ class orm_log extends orm{
         $this->schema[1]['limit']='';
         $this->schema[1]['null']=0;
         $this->schema[1]['key']=0;
+        
+        $this->checkForTable(TRUE);
     }
 }
 
