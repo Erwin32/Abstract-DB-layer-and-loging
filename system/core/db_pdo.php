@@ -51,9 +51,7 @@ class db_pdo{
     
     public function query($sql,$mode='exec'){
         
-        echo 'Tring Query:'.$sql.'<br>in mode '.$mode.'<br>';
         if($mode=='select'){
-            echo 'select query inside if<br>';
             try {
             $result=$this->pdo->query($query);
             } catch(PDOException $ex) {
@@ -63,9 +61,9 @@ class db_pdo{
             }   
         }
         else{
-            echo 'other query inside else<br>';
-            $this->pdo->exec($sql);
-            //here I need to close cursor 
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+            $stmt->closeCursor();
             return TRUE;
         }
         
@@ -75,11 +73,15 @@ class db_pdo{
     public function fetch_array($result){
         if(is_object($result)){
             $data= $result->fetch(PDO::FETCH_ASSOC);
-            $result->closeCursor();
             return $data;
         }
         
         return FALSE;
+    }
+    
+    public function cleanUp($result) {
+        $result->closeCursor();
+        return TRUE;
     }
     
     public function num_rows($result){

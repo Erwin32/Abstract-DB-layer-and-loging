@@ -91,6 +91,7 @@ class orm {
             $this->unload();
             return $this;
         }
+        $this->db_class->cleanUp($result);
         $this->loadExtraWork();
         $this->loaded=1;
         
@@ -233,8 +234,6 @@ class orm {
      */
     public function checkForTable($ifNotCreateIt=FALSE) {
         $result=$this->db_class->query("SHOW TABLES LIKE '$this->table'");
-            echo $result;
-            var_dump($result);
            $prep=$this->db_class->fetch_array($result);
            if($prep==FALSE){
                if($ifNotCreateIt){

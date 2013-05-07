@@ -24,7 +24,6 @@ class orm_log extends orm{
         $this->schema[1]['null']=0;
         $this->schema[1]['key']=0;
         
-        $this->checkForTable(TRUE);
     }
 }
 
