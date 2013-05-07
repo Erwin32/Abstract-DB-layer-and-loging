@@ -1,7 +1,7 @@
 <?php
 
 /**
- * DB class for some basic simpilification in future odbc functions will be here however for ORM class nothing will change
+ * DB class for some basic simpilification for PDO mode
  * @author Ervin
  */
 class db_pdo{

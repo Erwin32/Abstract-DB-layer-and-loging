@@ -52,7 +52,7 @@ class db{
         else{return $this->link;}
     }
     
-    public function query($sql){
+    public function query($sql,$mode){
         $result=mysql_query($sql, $this->link);
         return $result;
     }
@@ -63,6 +63,11 @@ class db{
             return $data;
         }
         return FALSE;
+    }
+    
+    public function cleanUp($result) {
+        //nothing here this is dumy function to prevent errors in PDO its requred by ORM class
+        return TRUE;
     }
     
     public function num_rows($result){

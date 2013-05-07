@@ -16,7 +16,7 @@ autoload_classes();
 //get general config file
 require_once(_REALPATH.'app/conf/general-config.php');
 
-//init DB
+//init DB (db for old mysql db_pdo for PDO)
 $db1=new db_pdo;
 $db1->conect();
 log::init($db1);

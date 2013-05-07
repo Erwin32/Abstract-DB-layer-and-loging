@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class db | Frame</title>
+	<title>Class db_pdo | Frame</title>
 
 	<script type="text/javascript" src="resources/combined.js?1681754453"></script>
 	<script type="text/javascript" src="elementlist.js?679243394"></script>
@@ -26,8 +26,8 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-db.html">db</a></li>
-				<li><a href="class-db_pdo.html">db_pdo</a></li>
+				<li><a href="class-db.html">db</a></li>
+				<li class="active"><a href="class-db_pdo.html">db_pdo</a></li>
 				<li><a href="class-log.html">log</a></li>
 				<li><a href="class-orm.html">orm</a></li>
 				<li><a href="class-orm_log.html">orm_log</a></li>
@@ -75,13 +75,12 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class db</h1>
+	<h1>Class db_pdo</h1>
 
 
 	<div class="description">
 	
-<p>DB class for some basic simpilification in future odbc functions will be here
-however for ORM class nothing will change</p>
+<p>DB class for some basic simpilification for PDO mode</p>
 
 	</div>
 
@@ -101,7 +100,7 @@ however for ORM class nothing will change</p>
 
 				<b>Author:</b>
 				Ervin<br />
-		<b>Located at</b> <a href="source-class-db.html#3-72" title="Go to source code">system/core/db.php</a><br />
+		<b>Located at</b> <a href="source-class-db_pdo.html#3-91" title="Go to source code">system/core/db_pdo.php</a><br />
 	</div>
 
 
@@ -119,7 +118,7 @@ however for ORM class nothing will change</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-db.html#18-26" title="Go to source code">__construct</a>( <span>mixed <var>$adr</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$usr</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$pass</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$db</var> = <span class="php-keyword1">NULL</span></span> )</code>
+		<code><a href="source-class-db_pdo.html#19-27" title="Go to source code">__construct</a>( <span>mixed <var>$adr</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$usr</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$pass</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$db</var> = <span class="php-keyword1">NULL</span></span> )</code>
 
 		<div class="description short">
 			
@@ -152,7 +151,7 @@ however for ORM class nothing will change</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_makeSafe">#</a>
-		<code><a href="source-class-db.html#29-35" title="Go to source code">makeSafe</a>( <span>mixed <var>$str</var></span> )</code>
+		<code><a href="source-class-db_pdo.html#30-36" title="Go to source code">makeSafe</a>( <span>mixed <var>$str</var></span> )</code>
 
 		<div class="description short">
 			
@@ -185,7 +184,7 @@ however for ORM class nothing will change</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_conect">#</a>
-		<code><a href="source-class-db.html#37-53" title="Go to source code">conect</a>( )</code>
+		<code><a href="source-class-db_pdo.html#40-50" title="Go to source code">conect</a>( )</code>
 
 		<div class="description short">
 			
@@ -214,7 +213,7 @@ however for ORM class nothing will change</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_query">#</a>
-		<code><a href="source-class-db.html#55-58" title="Go to source code">query</a>( <span>mixed <var>$sql</var></span>, <span>mixed <var>$mode</var></span> )</code>
+		<code><a href="source-class-db_pdo.html#52-71" title="Go to source code">query</a>( <span>mixed <var>$sql</var></span>, <span>mixed <var>$mode</var> = <span class="php-quote">'exec'</span></span> )</code>
 
 		<div class="description short">
 			
@@ -243,7 +242,36 @@ however for ORM class nothing will change</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_fetch_array">#</a>
-		<code><a href="source-class-db.html#60-66" title="Go to source code">fetch_array</a>( <span>mixed <var>$result</var></span> )</code>
+		<code><a href="source-class-db_pdo.html#73-80" title="Go to source code">fetch_array</a>( <span>mixed <var>$result</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="cleanUp" id="_cleanUp">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_cleanUp">#</a>
+		<code><a href="source-class-db_pdo.html#82-85" title="Go to source code">cleanUp</a>( <span>mixed <var>$result</var></span> )</code>
 
 		<div class="description short">
 			
@@ -272,7 +300,7 @@ however for ORM class nothing will change</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_num_rows">#</a>
-		<code><a href="source-class-db.html#68-71" title="Go to source code">num_rows</a>( <span>mixed <var>$result</var></span> )</code>
+		<code><a href="source-class-db_pdo.html#87-90" title="Go to source code">num_rows</a>( <span>mixed <var>$result</var></span> )</code>
 
 		<div class="description short">
 			
@@ -312,7 +340,7 @@ however for ORM class nothing will change</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-db.html#8-11" title="Go to source code"><var>$user</var></a>
+				<a href="source-class-db_pdo.html#8-11" title="Go to source code"><var>$user</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -339,7 +367,7 @@ however for ORM class nothing will change</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-db.html#12" title="Go to source code"><var>$pass</var></a>
+				<a href="source-class-db_pdo.html#12" title="Go to source code"><var>$pass</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -362,7 +390,7 @@ however for ORM class nothing will change</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-db.html#13" title="Go to source code"><var>$database</var></a>
+				<a href="source-class-db_pdo.html#13" title="Go to source code"><var>$database</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -385,34 +413,11 @@ however for ORM class nothing will change</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-db.html#14" title="Go to source code"><var>$address</var></a>
+				<a href="source-class-db_pdo.html#14" title="Go to source code"><var>$address</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
 			<a href="#$address" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="link" id="$link">
-		<td class="attributes"><code>
-			protected  
-			mixed
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-db.html#15" title="Go to source code"><var>$link</var></a>
-		</td>
-		<td class="value"><code></code></td>
-		<td class="description"><div>
-			<a href="#$link" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -431,11 +436,34 @@ however for ORM class nothing will change</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-db.html#16" title="Go to source code"><var>$db_selected</var></a>
+				<a href="source-class-db_pdo.html#15" title="Go to source code"><var>$db_selected</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
 			<a href="#$db_selected" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="pdo" id="$pdo">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-db_pdo.html#16" title="Go to source code"><var>$pdo</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$pdo" class="anchor">#</a>
 
 			<div class="description short">
 				
