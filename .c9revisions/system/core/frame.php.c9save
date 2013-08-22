@@ -1,0 +1,4 @@
+{"ts":1377182040460,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1377182019436,"patch":[[{"diffs":[[1,"<?php\n\nclass frame {\n    private $foo = \"I'm only a var\";\n    private $objects;\n    public function __get($class){\n        if(isset($this->objects[$class])){\n            return $this->objects[$class];\n        }\n        return $this->objects[$class] = new $class();\n    }\n}\n\n//end of file"]],"start1":0,"start2":0,"length1":0,"length2":287}]],"length":287,"saved":false}
+{"ts":1377183561572,"patch":[[{"diffs":[[0,"ass "],[-1,"frame {\n    private $foo = \"I'm only a var\";\n    private"],[1,"container {\n    public"],[0," $ob"]],"start1":9,"start2":9,"length1":64,"length2":30}]],"length":253,"saved":false}
+{"ts":1377183626243,"patch":[[{"diffs":[[0," {\n    p"],[-1,"ublic"],[1,"rivate"],[0," $object"]],"start1":22,"start2":22,"length1":21,"length2":22}]],"length":254,"saved":false}

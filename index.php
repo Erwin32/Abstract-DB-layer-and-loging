@@ -13,13 +13,16 @@ define('_REALPATH', $system_path);
 //initialize frame
 require_once(_REALPATH.'system/autoload.php');
 autoload_classes();
+
+$frame=new frame();
+
 //get general config file
 require_once(_REALPATH.'app/conf/general-config.php');
 
 //init DB (db for old mysql db_pdo for PDO)
-$db1=new db_pdo;
-$db1->conect();
-log::init($db1);
+//$frame->db1=new db_pdo;
+$frame->db1->conect();
+log::init($frame->db1);
 
 //connect your defined ORMs
 autoload_orms();
