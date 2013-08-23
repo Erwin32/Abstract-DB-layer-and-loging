@@ -46,7 +46,11 @@ class orm {
      * @var type 
      */
     protected $db_class;
-
+    /**
+     * db_engine contains table engine mainly used for table creation
+     * @var type
+     */
+    protected $db_engine='MyISAM';
 
 
 
@@ -82,7 +86,7 @@ class orm {
             log::writeLogEntry($logStatement);
             return $this;
         }
-        $sql="SELECT * FROM $this->table";
+        $sql="SELECT * FROM $this->table WHERE $this->keyField=$this->key";
         $result=$this->db_class->query($sql,'select');
         $this->fields=$this->db_class->fetch_array($result);
         if($this->fields==FALSE){
@@ -96,6 +100,55 @@ class orm {
         $this->loaded=1;
         
     return $this;
+    }
+    
+    /**
+     * Loads one or multiple rows by given context array
+     * context is composed like array('column_name'=>'value')
+     * @param type $context
+     * @param type $limit
+     * @return bolean
+     */
+    public function loadByContext($context,$limit='none'){
+        if(is_array($context)){
+            if(empty($this->table)){return FALSE;}
+            $sql="SELECT * FROM $this->table WHERE ";
+            $cont=1;
+            foreach($context as $key=>$value){
+                if($cont!=1){$andWhere='AND ';}else{$andWhere='';}
+                $sql.=$andWhere.$key.'='.$value.' ';
+            }
+            if('none'!=$limit && intval($limit)!=0){
+                $sql.='LIMIT '.intval($limit).';';
+            }
+            $result=$this->db_class->query($sql,'select');
+            while($row=$this->db_class->fetch_array($result)){
+                $data[]=$row;
+            }
+            if(count($data)>1){
+                $this->fields=$data;
+            }
+            else {
+                $this->fields=$data[0];
+            }
+            
+            if($this->fields==FALSE){
+                $logStatement='ORM Load failed in '.get_class($this).' SELECT failed!';
+                log::writeLogEntry($logStatement);
+                $this->unload();
+                return FALSE;
+            }
+            $this->db_class->cleanUp($result);
+            $this->loadExtraWork();
+            $this->loaded=1;
+            
+            return TRUE;
+        }
+        else {
+            $logStatement='ORM Load failed in '.get_class($this).' wrong context passed!';
+            log::writeLogEntry($logStatement);
+            return FALSE;
+        }
     }
     
     /**
@@ -180,15 +233,21 @@ class orm {
      * @return \orm
      */
     public function delete($hasChildsOrParrents=FALSE,$andUnload=FALSE) {
-        $sql="DELETE FROM $this->table WHERE $this->keyField=$this->key LIMIT 1;";
-        $this->db_class->query($sql);
-        $this->loaded=3;
-        if($hasChildsOrParrents){
-            $this->deleteExtraWork();
+        if(!empty($this->key) AND !empty($this->keyField) AND !empty($this->table)){
+            $sql="DELETE FROM $this->table WHERE ".$this->keyField."=".$this->key." LIMIT 1;";
+            $this->db_class->query($sql);
+            $this->loaded=3;
+            if($hasChildsOrParrents){
+                $this->deleteExtraWork();
+            }
+            
+            if($andUnload){
+                $this->unload();
+            }
         }
-        
-        if($andUnload){
-            $this->unload();
+        else {
+            $logStatement='ORM delete failed in '.get_class($this).' Wrong orm class init!';
+            log::writeLogEntry($logStatement);
         }
         
         return $this;
@@ -279,7 +338,7 @@ class orm {
         }
         
         $sql.='PRIMARY KEY (`'.$primary.'`)';
-        $sql.=') ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1 ;';
+        $sql.=') ENGINE='.$this->db_engine.' DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1 ;';//MyISAM
         
         $this->db_class->query($sql);
     }
