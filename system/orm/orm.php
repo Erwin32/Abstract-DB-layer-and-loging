@@ -126,7 +126,8 @@ class orm {
                 $data[]=$row;
             }
             if(count($data)>1){
-                $this->fields=$data;
+                //$this->fields=$data;
+                $returnData=TRUE;
             }
             else {
                 $this->fields=$data[0];
@@ -142,6 +143,9 @@ class orm {
             $this->loadExtraWork();
             $this->loaded=1;
             
+            if($returnData){
+                return $data;
+            }
             return TRUE;
         }
         else {
@@ -168,7 +172,7 @@ class orm {
      * @return \orm
      */
     public function set($what, $val, $update=FALSE){
-        $val=$this->db_class->makeSafe($val);
+        //$val=$this->db_class->makeSafe($val);
         $this->fields[$what]=$val;
         
         if(1==$this->loaded or 2==$this->loaded){
