@@ -110,30 +110,50 @@ class orm {
      * @return bolean
      */
     public function loadByContext($context,$limit='none'){
+        
         if(is_array($context)){
+            //log::writeLogEntry('wtf');
             if(empty($this->table)){return FALSE;}
-            $sql="SELECT * FROM $this->table WHERE ";
-            $cont=1;
-            foreach($context as $key=>$value){
-                if($cont!=1){$andWhere='AND ';}else{$andWhere='';}
-                $sql.=$andWhere.$key.'='.$value.' ';
+            $sql="SELECT * FROM $this->table";
+            if(empty($context)){
+                $sql.=' ';
             }
+            else {
+                $count=1;
+                foreach($context as $key=>$value){
+                    if($count!=1){$andWhere='AND ';}else{$andWhere=' WHERE ';}
+                    $sql.=$andWhere.$key."='".$value."' ";
+                    $count++;
+                }
+            }
+            
+            //log::writeLogEntry('wtf 2');
             if('none'!=$limit && intval($limit)!=0){
                 $sql.='LIMIT '.intval($limit).';';
             }
+            //exit($sql);
+            
             $result=$this->db_class->query($sql,'select');
             while($row=$this->db_class->fetch_array($result)){
                 $data[]=$row;
             }
+            
+            
             if(count($data)>1){
                 //$this->fields=$data;
                 $returnData=TRUE;
             }
             else {
                 $this->fields=$data[0];
+                if($limit==1){
+                    $returnData=FALSE;
+                }
+                else {
+                    $returnData=TRUE;
+                }
             }
             
-            if($this->fields==FALSE){
+            if($this->fields==FALSE && $returnData==FALSE){
                 $logStatement='ORM Load failed in '.get_class($this).' SELECT failed!';
                 log::writeLogEntry($logStatement);
                 $this->unload();
